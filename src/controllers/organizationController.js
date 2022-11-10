@@ -27,10 +27,6 @@ const loginOrg = async (req, res) => {
         //generate token
         let token = jwt.sign({ organizationId: getOrgData._id }, "syngetaapp", {expiresIn: '24h'});
 
-        //assign the userdId in a variable
-       // let userData = getEmailData._doc
-       //let userData = getUserData
-
         //set the headers
         res.status(200).setHeader("x-api-key", token);
 
@@ -95,26 +91,6 @@ const createOrg = async (req, res) =>{
         res.status(500).send({status: false, Error: err.message})
     }
 }
-
-// const updateOrg = async (req, res) => {
-//     try{
-//         const orgId = req.params.id;
-//         if (!orgId) return res.status(400).send({status: false,message: "orgId not Exist"})
-
-//         let searchOrg = await organizationModel.findOne({_id: orgId})
-//         if (!searchOrg) return res.status(404).send({status: false,message: `Organization details does not exist by this ${orgId}.`})
-
-//         if(searchTodo.isDeleted == true) return res.status(404).send({status: false, message: "Organization Data is deleted you cant updated now"})
-
-
-//         const data = req.body
-//         let changeDetails = await organizationModel.findOneAndUpdate({_id: orgId}, { Name: data.Name, }, {new: true})
-//         res.status(200).send({status: true, message: "updated", data: changeDetails})
-
-//     }catch(err){
-//         res.status(500).send({status: false, Error:err.message})
-//     }
-// }
 
 const getOrg = async(req, res) => {
     try{

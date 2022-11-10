@@ -24,11 +24,7 @@ const organizationSchema =  new mongoose.Schema({
         required: true,
         minlength: 8,
         trim: true
-      },
-    // isDeleted: {
-    //     type: Boolean,
-    //     default: false
-    // }
+      }
 },{timestamps: true})
 
 const organizationModel = mongoose.model('organization', organizationSchema)
